@@ -9,7 +9,6 @@ import flash.text.TextFormat;
 import flash.geom.ColorTransform;
 
 Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
-gameOver.alpha=0;
 var randomColor: int = Math.random()*5;
 var startText: String;
 var countDown: int = 10;
@@ -42,25 +41,16 @@ gameCounter.start();
 spawnBalloon.start();
 var balloons: Array = new Array;
 spawnBalloon.addEventListener(TimerEvent.TIMER,addBalloon);
-gameCounter.addEventListener(TimerEvent.TIMER,gameCounterHandler);
-
-function gameCounterHandler(event:TimerEvent):void{
-	countDown--;
-	if(countDown == 0){
-		gameOver.alpha=1;
-	}
-	textField3.defaultTextFormat = new TextFormat('OCR A Std',50);
-	textField3.textColor = 0xFF0000;
-	textField3.text= countDown.toString();
-}
+var textField: TextField = new TextField();
+var textField2: TextField = new TextField();
+stage.addChildAt(textField2,1);
+stage.addChildAt(textField,2);
 
 function addBalloon (event:TimerEvent): void{
 	var direction:Boolean = Math.random()>.5 ? true:false;
 	var colorArray:Array = new Array(0xFF4400, 0x00FF44, 0x4400FF, 0xFFFF00, 0xFFC0CB);
 	var randomColorID:Number = Math.floor(Math.random()*colorArray.length);
 	var myColor:ColorTransform = this.transform.colorTransform;
-	var textField: TextField = new TextField();
-	var textField2: TextField = new TextField();
 	var balloon: Balloon = new Balloon;
 	
 	textField.x=250;
@@ -76,10 +66,11 @@ function addBalloon (event:TimerEvent): void{
 	textField2.width=stage.stageWidth;
 	textField2.text= "Pop the "+startText+" balloons";
 	
-	stage.addChildAt(balloon,0);
-	stage.addChild(textField2);
-	stage.addChild(textField);
+	stage.addChildAt(balloon,1);
+	setChildIndex(gameOver, 2);
+	setChildIndex(clouds, 0);
 	
+	trace(numChildren);
 	if(direction == true){
 		balloon.scaleX *=-1;
 	}
@@ -110,14 +101,34 @@ function addBalloon (event:TimerEvent): void{
 			balloon.gotoAndPlay(1);
 			counter--;
 			if(counter ==0){
-				gameOver.alpha=1;
+				trace("Victory!");
 			}
 		}
 		else if(myColor.color!=colorArray[randomColor]){
-			gameOver.alpha=1;
+			trace("Game Over");
 		}
 	}
 }
+
+gameCounter.addEventListener(TimerEvent.TIMER,gameCounterHandler);
+function gameCounterHandler(event:TimerEvent):void{
+	countDown--;
+	if(countDown == 0){
+
+		gameOver.x = stage.stageWidth/2;
+		gameOver.y = stage.stageHeight/2;
+		for(var i: int = 0; i < balloons.length; i++){
+			stage.removeChild(balloons[i]);
+			textField.alpha=0;
+			textField2.alpha=0;
+			
+		}
+	}
+	textField3.defaultTextFormat = new TextFormat('OCR A Std',50);
+	textField3.textColor = 0xFF0000;
+	textField3.text= "hello";
+}
+
 
 
 
