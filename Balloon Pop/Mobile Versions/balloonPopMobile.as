@@ -11,6 +11,7 @@ Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 
 var randomColor: int = Math.random()*5;
 var startText: String;
+var countDown: int = 10;
 
 if(randomColor == 0){
 	startText = "red";
@@ -35,9 +36,19 @@ else{
 var counter: int = 0;
 var selectedObject: DisplayObject;
 var spawnBalloon : Timer = new Timer(5,30)
+var gameCounter : Timer = new Timer(1000);
+gameCounter.start();
 spawnBalloon.start();
 var balloons: Array = new Array;
-spawnBalloon.addEventListener(TimerEvent.TIMER, addBalloon);
+spawnBalloon.addEventListener(TimerEvent.TIMER,addBalloon);
+gameCounter.addEventListener(TimerEvent.TIMER,gameCounterHandler);
+
+function gameCounterHandler(event:TimerEvent):void{
+	countDown--;
+	if(countDown == 0){
+		trace("game over");
+	}
+}
 
 function addBalloon (event:TimerEvent): void{
 	var direction:Boolean = Math.random()>.5 ? true:false;
@@ -77,7 +88,6 @@ function addBalloon (event:TimerEvent): void{
 	myColor.color=colorArray[randomColorID];
 	if(randomColorID == randomColor){
 		counter++;
-		trace(counter);
 	}
 	
 	balloon.transform.colorTransform = myColor;
