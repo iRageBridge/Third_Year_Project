@@ -45,11 +45,25 @@ function addBalloon (event:TimerEvent): void{
 	var randomColorID:Number = Math.floor(Math.random()*colorArray.length);
 	var myColor:ColorTransform = this.transform.colorTransform;
 	var textField: TextField = new TextField();
-	textField.width=stage.stageWidth;
-	textField.text= "Pop the "+startText+" balloons";
+	var textField2: TextField = new TextField();
 	var balloon: Balloon = new Balloon;
 	
+	textField.x=250;
+	textField2.x=253;
+	textField.y=100;
+	textField2.y=103;
+	textField.defaultTextFormat = new TextFormat('OCR A Std',50);
+	textField2.defaultTextFormat = new TextFormat('OCR A Std',50);
+	textField.textColor = colorArray[randomColor];
+	textField2.textColor = 0x000000;
+	
+	textField.width=stage.stageWidth;
+	textField.text= "Pop the "+startText+" balloons";
+	textField2.width=stage.stageWidth;
+	textField2.text= "Pop the "+startText+" balloons";
+	
 	stage.addChild(balloon);
+	stage.addChild(textField2);
 	stage.addChild(textField);
 	
 	if(direction == true){
@@ -67,7 +81,7 @@ function addBalloon (event:TimerEvent): void{
 	}
 	
 	balloon.transform.colorTransform = myColor;
-	textField.textColor = colorArray[randomColor];
+	
 	balloons.push(balloon);
 	balloon.addEventListener(Event.ENTER_FRAME, balloonMovement);
 
