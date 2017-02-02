@@ -57,7 +57,7 @@ function addBalloon (event:TimerEvent): void{
 	var myColor:ColorTransform = this.transform.colorTransform;
 	var textField: TextField = new TextField();
 	var textField2: TextField = new TextField();
-	var balloon: Balloon = new Balloon;
+	var balloonBorderMC: BalloonBorderMC = new BalloonBorderMC;
 	
 	textField.x=250;
 	textField2.x=253;
@@ -73,38 +73,38 @@ function addBalloon (event:TimerEvent): void{
 	textField2.width=stage.stageWidth;
 	textField2.text= "Pop the "+startText+" balloons";
 	
-	stage.addChild(balloon);
+	stage.addChild(balloonBorderMC);
 	stage.addChild(textField2);
 	stage.addChild(textField);
 	
 	if(direction == true){
-		balloon.scaleX *=-1;
+		balloonBorderMC.scaleX *=-1;
 	}
-	balloon.y = Math.random()* stage.stageHeight;
-	balloon.x = Math.random()* stage.stageWidth-balloon.width;
-	if(balloon.x < balloon.width){
-		balloon.x = balloon.width;
+	balloonBorderMC.y = Math.random()* stage.stageHeight;
+	balloonBorderMC.x = Math.random()* stage.stageWidth-balloonBorderMC.width;
+	if(balloonBorderMC.x < balloonBorderMC.width){
+		balloonBorderMC.x = balloonBorderMC.width;
 	}
 	myColor.color=colorArray[randomColorID];
 	if(randomColorID == randomColor){
 		counter++;
 	}
 	
-	balloon.transform.colorTransform = myColor;
+	balloonBorderMC.balloon.transform.colorTransform = myColor;
 	
-	balloons.push(balloon);
-	balloon.addEventListener(Event.ENTER_FRAME, balloonMovement);
+	balloons.push(balloonBorderMC);
+	balloonBorderMC.addEventListener(Event.ENTER_FRAME, balloonMovement);
 
 	function balloonMovement (event:Event) : void{
-		balloon.y-=3;
-		if(balloon.y <= 0){
-			balloon.y = stage.stageHeight;
+		balloonBorderMC.y-=3;
+		if(balloonBorderMC.y <= 0){
+			balloonBorderMC.y = stage.stageHeight+balloonBorderMC.height;
 		}
 	}
-	balloon.addEventListener(TouchEvent.TOUCH_BEGIN, balloonHandler);
+	balloonBorderMC.addEventListener(TouchEvent.TOUCH_BEGIN, balloonHandler);
 	function balloonHandler(event:TouchEvent):void{
 		if(myColor.color==colorArray[randomColor]){
-			balloon.gotoAndPlay(1);
+			balloonBorderMC.balloon.gotoAndPlay(1);
 			counter--;
 			if(counter ==0){
 				trace("Victory!!");
