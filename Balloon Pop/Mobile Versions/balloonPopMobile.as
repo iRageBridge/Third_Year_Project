@@ -4,11 +4,14 @@ import flash.events.MouseEvent;
 import flash.utils.Timer;
 import flash.events.TimerEvent;
 import flash.events.TouchEvent;
+import flash.text.TextField;
+import flash.text.TextFormat;
 
 Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 
 var randomColor: int = Math.random()*5;
 var startText: String;
+
 if(randomColor == 0){
 	startText = "red";
 }
@@ -29,7 +32,6 @@ else{
 	startText = "pink";
 }
 
-trace("Pop the " + startText + " balloons!");
 var counter: int = 0;
 var selectedObject: DisplayObject;
 var spawnBalloon : Timer = new Timer(5,30)
@@ -42,8 +44,14 @@ function addBalloon (event:TimerEvent): void{
 	var colorArray:Array = new Array(0xFF4400, 0x00FF44, 0x4400FF, 0xFFFF00, 0xFFC0CB);
 	var randomColorID:Number = Math.floor(Math.random()*colorArray.length);
 	var myColor:ColorTransform = this.transform.colorTransform;
+	var textField: TextField = new TextField();
+	textField.width=stage.stageWidth;
+	textField.text= "Pop the "+startText+" balloons";
 	var balloon: Balloon = new Balloon;
+	
 	stage.addChild(balloon);
+	stage.addChild(textField);
+	
 	if(direction == true){
 		balloon.scaleX *=-1;
 	}
@@ -57,7 +65,9 @@ function addBalloon (event:TimerEvent): void{
 		counter++;
 		trace(counter);
 	}
+	
 	balloon.transform.colorTransform = myColor;
+	textField.textColor = colorArray[randomColor];
 	balloons.push(balloon);
 	balloon.addEventListener(Event.ENTER_FRAME, balloonMovement);
 
@@ -77,7 +87,7 @@ function addBalloon (event:TimerEvent): void{
 			}
 		}
 		else if(myColor.color!=colorArray[randomColor]){
-			trace("FUCKIN' LOSER!!");
+			trace("LOSER!!");
 		}
 	}
 }
