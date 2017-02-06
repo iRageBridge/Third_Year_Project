@@ -129,10 +129,13 @@ function gameCounterHandler(event:TimerEvent):void{
 }
 
 function gameOver():void{
+	trace("Game Over");
 	gameOverScreen.x = stage.stageWidth/2;
 	gameOverScreen.y = stage.stageHeight/2;
 	for(var i: int = 0; i < balloons.length; i++){
-		stage.removeChild(balloons[i]);
+		if(contains(balloons[i])){
+			stage.removeChild(balloons[i]);
+		}
 		textField.alpha=0;
 		textField2.alpha=0;
 	}
@@ -140,9 +143,9 @@ function gameOver():void{
 
 function victory():void{
 	victoryScreen.x = stage.stageWidth/2;
-	victoryScreen.y = stage.stageWidth/2;
+	victoryScreen.y = 360;
 	for(var i: int = 0; i < balloons.length; i++){
-		//stage.removeChild(balloons[i]);
+		stage.removeChild(balloons[i]);
 		textField.alpha=0;
 		textField2.alpha=0;
 	}
