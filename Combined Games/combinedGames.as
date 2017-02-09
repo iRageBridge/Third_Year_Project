@@ -68,7 +68,7 @@ function randomGameGenorator(){
 			var direction:Boolean = Math.random()>.5 ? true:false;
 			var colorArray:Array = new Array(0xFF4400, 0x00FF44, 0x4400FF, 0xFFFF00, 0xFFC0CB);
 			var randomColorID:Number = Math.floor(Math.random()*colorArray.length);
-			//var myColor:ColorTransform = this.transform.colorTransform;
+			var myColor:ColorTransform = this.transform.colorTransform;
 			var balloon: Balloon = new Balloon;
 			
 			textField.textColor = colorArray[randomColor];
@@ -86,9 +86,9 @@ function randomGameGenorator(){
 			balloon.x = Math.random()* stage.stageWidth-balloon.width;
 			balloon.addEventListener(Event.ENTER_FRAME, balloonMovement);
 			balloon.addEventListener(TouchEvent.TOUCH_BEGIN, balloonHandler);
-			//myColor.color=colorArray[randomColorID];
+			myColor.color=colorArray[randomColorID];
 			balloons.push(balloon);
-			//balloon.transform.colorTransform = myColor;
+			balloon.transform.colorTransform = myColor;
 			
 			if(direction == true){
 				balloon.scaleX *=-1;
@@ -110,16 +110,16 @@ function randomGameGenorator(){
 			}
 			
 			function balloonHandler(event:TouchEvent):void{
-				//if(myColor.color==colorArray[randomColor]){
+				if(myColor.color==colorArray[randomColor]){
 					balloon.gotoAndPlay(1);
 					counter--;
 					if(counter ==0){
 						victory();
 					}
-				//}
-				//else if(myColor.color!=colorArray[randomColor]){
-					//gameOver();
-				//}
+				}
+				else if(myColor.color!=colorArray[randomColor]){
+					gameOver();
+				}
 			}
 		}
 
