@@ -20,9 +20,9 @@
   <id>combinedGamesWithTimersApp</id>
   <versionNumber>1.0.0</versionNumber>
   <versionLabel/>
-  <filename>combinedGamesWithTimersApp_v02</filename>
+  <filename>combinedGames_v03</filename>
   <description/>
-  <name>combinedGamesWithTimersApp_v02</name>
+  <name>combinedGames_v03</name>
   <copyright/>
   <initialWindow>
     <content>combinedGamesWithTimersApp.swf</content>
@@ -36,4 +36,9 @@
   <icon/>
   <customUpdateUI>false</customUpdateUI>
   <allowBrowserInvocation>false</allowBrowserInvocation>
+  <android>
+    <manifestAdditions><![CDATA[<manifest>
+<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+</manifest>]]></manifestAdditions>
+  </android>
 </application>
