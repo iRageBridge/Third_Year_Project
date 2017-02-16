@@ -19,7 +19,7 @@
 <application xmlns="http://ns.adobe.com/air/application/3.8">
   <id>combinedGamesWithTimersApp</id>
   <versionNumber>1.0.0</versionNumber>
-  <versionLabel></versionLabel>
+  <versionLabel/>
   <filename>combinedGamesWithTimersApp</filename>
   <description/>
   <name>combinedGamesWithTimersApp</name>
