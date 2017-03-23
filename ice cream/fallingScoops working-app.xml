@@ -17,29 +17,23 @@
 	</name>
 -->
 <application xmlns="http://ns.adobe.com/air/application/3.8">
-  <id>combinedGamesWithTimersApp</id>
-  <versionNumber>8.0.0</versionNumber>
+  <id>fallingScoopsworking</id>
+  <versionNumber>1.0.0</versionNumber>
   <versionLabel/>
-  <filename>combinedGame10</filename>
+  <filename>fallingScoops working</filename>
   <description/>
-  <name>combinedGame10</name>
+  <name>fallingScoops working</name>
   <copyright/>
   <initialWindow>
-    <content>combinedGamesWithTimersApp.swf</content>
+    <content>fallingScoops%20working.swf</content>
     <systemChrome>standard</systemChrome>
     <transparent>false</transparent>
     <visible>true</visible>
-    <fullScreen>true</fullScreen>
-    <aspectRatio>landscape</aspectRatio>
+    <fullScreen>false</fullScreen>
+    <aspectRatio>portrait</aspectRatio>
     <renderMode>cpu</renderMode>
-    <autoOrients>false</autoOrients></initialWindow>
+  </initialWindow>
   <icon/>
   <customUpdateUI>false</customUpdateUI>
   <allowBrowserInvocation>false</allowBrowserInvocation>
-  <android>
-    <manifestAdditions><![CDATA[<manifest>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-<uses-permission android:name="android.permission.RECORD_AUDIO"/>
-</manifest>]]></manifestAdditions>
-  </android>
 </application>

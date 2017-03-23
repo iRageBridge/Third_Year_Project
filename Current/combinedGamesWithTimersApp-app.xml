@@ -18,11 +18,11 @@
 -->
 <application xmlns="http://ns.adobe.com/air/application/3.8">
   <id>combinedGamesWithTimersApp</id>
-  <versionNumber>8.0.0</versionNumber>
+  <versionNumber>1.0.0</versionNumber>
   <versionLabel/>
-  <filename>combinedGame10</filename>
+  <filename>combinedGamesWithTimersApp</filename>
   <description/>
-  <name>combinedGame10</name>
+  <name>combinedGamesWithTimersApp</name>
   <copyright/>
   <initialWindow>
     <content>combinedGamesWithTimersApp.swf</content>
@@ -40,6 +40,7 @@
     <manifestAdditions><![CDATA[<manifest>
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+<uses-permission android:name="android.permission.WAKE_LOCK"/>
 </manifest>]]></manifestAdditions>
   </android>
 </application>
